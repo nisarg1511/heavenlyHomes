@@ -1,0 +1,54 @@
+<div class="d-flex flex-column auth-form p-4 rounded-1" >
+    <h3 class="fs-4 bolder text-center">Sign Up</h3>
+    <hr>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <!--UserName-->
+      <label class="fs-9 fw-500 text__gray">User name</label>
+      <input type="text" 
+      class="form-control fs-8 mt-1 rounded-0 auth-input"
+      required
+      ngModel
+      name="userName"
+      userName
+      #userName="ngModel">
+      <div *ngIf="!userName.valid && userName.touched" class="text-danger fs-8 mt-1">
+        Please enter a User name.
+      </div>
+      <!-- Email ID -->
+      <label class="fs-9 fw-500 text__gray">Email Address</label>
+      <input 
+      [class.border-danger]="!email.valid && email.touched"
+        class="form-control fs-8 mt-1 rounded-0 auth-input"
+        required 
+        ngModel
+        email
+        name="email"
+        #email="ngModel"/>
+      <div *ngIf="!email.valid && email.touched" class="text-danger fs-8 mt-1">
+        Please enter your email id.
+      </div>
+    
+      <!-- Password -->
+      <label class="fs-9 fw-500 text__gray mt-2">Password</label>
+      <div class="input-group">
+        <input #passwordInput 
+        type="password"
+        [class.border-danger]="!password.valid && password.touched"
+          class="form-control fs-8 mt-1 rounded-0  auth-input" 
+          aria-describedby="UserPassword" name="password" 
+          ngModel
+          required
+          #password="ngModel"
+          name="password"/>
+      </div>
+      <div *ngIf="!password.valid && password.touched" class="text-danger fs-8 mt-1">
+        Please enter your password.
+      </div>
+      <button type="submit"
+      [disabled]="!f.valid"
+       class="btn bg-main-blue w-100 mt-4 text-light  fs-7" type="submit">
+        SignUp
+      </button>
+      <a [routerLink]="'/auth/login'"  class="fs-7">Sign In to an existing account.</a>
+    </form>
+</div>
