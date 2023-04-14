@@ -1,0 +1,48 @@
+<div class="container w-75">
+  <div class="row clearfix">
+    <div class="justify-content-end">
+      <a class="btn btn-primary mb-2" routerLink="../">Back</a>
+    </div>
+     <div class="col-lg-12">
+        <div class="card chat-app">
+           <div class="chat">
+              <div class="chat-header clearfix">
+                 <div class="row">
+                    <div class="col-lg-12">
+                       <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                       <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                       </a>
+                       <div class="chat-about">
+                          <h6 class="m-b-0"></h6>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="chat-history" >
+                 <ul class="m-b-0" >
+                    <li class="clearfix" *ngFor="let message of messageList">
+                      <div class="message-data text-right">
+                        <span class="message-data-time">{{message.name}}</span>
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                    </div>
+                       <div class="message my-message"  *ngIf="message.message" >{{message.message}}</div>
+                    </li>
+                 </ul>
+              </div>
+              <form (submit)="sendMessage()" [formGroup]="messageForm">
+                  <div class="chat-message clearfix">
+                      <div class="input-group mb-0">
+                          <div class="input-group-prepend ">
+                              <button type="submit" class="input-group-text" [disabled]="!messageForm.valid">Send Message</button>
+                          </div>
+                          <input
+                              formControlName='newMessage'
+                              class="form-control" placeholder="Enter text here..."/>
+                      </div>
+                  </div>
+              </form>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>

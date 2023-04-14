@@ -1,4 +1,4 @@
-<div class="">
+<div class="sticky-top">
   <header class="py-3  border-bottom text-light bg-dark">
     <div class="container d-flex flex-wrap justify-content-center">
       <span class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-light text-decoration-none">
@@ -13,7 +13,7 @@
       <div class="col-12 col-lg-auto  mb-lg-0" role="search"></div>
     </div>
   </header>
-  <nav class="navbar  navbar-expand-lg navbar-light bg-body shadow" >
+  <nav class="navbar  navbar-expand-lg navbar-light bg-body shadow"  >
     <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,10 +29,13 @@
                 <a class="nav-link " routerLink="/professionals/category"  routerLinkActive="active">Professionals</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active">Calculator</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/calculator">Calculator</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link"routerLinkActive="active">About Us</a>
+              </li> -->
+              <li class="nav-item" >
+                <a class="nav-link " routerLink="/auth/login"  routerLinkActive="active">Logout</a>
               </li>
             </ul>
           </div>

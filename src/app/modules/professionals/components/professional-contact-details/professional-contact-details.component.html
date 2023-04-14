@@ -2,10 +2,10 @@
     <div class="card-body">
         <div class="row">
             <div class="col-sm-3">
-                <h6 class="mb-0">Full Name</h6>
+                <h6 class="mb-0">Company Name</h6>
             </div>
             <div class="col-sm-9 text-secondary">
-                Kenneth Valdez
+                {{professional.company_name}}
             </div>
         </div>
         <hr>
@@ -14,7 +14,7 @@
                 <h6 class="mb-0">Email</h6>
             </div>
             <div class="col-sm-9 text-secondary">
-                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e4828d94a48e918f89918cca8588">[email&nbsp;protected]</a>
+                {{professional.email}}
             </div>
         </div>
         <hr>
@@ -23,7 +23,7 @@
                 <h6 class="mb-0">Phone</h6>
             </div>
             <div class="col-sm-9 text-secondary">
-                (239) 816-9029
+                (91) {{professional.phone_number}}
             </div>
         </div>
         <hr>
@@ -32,7 +32,7 @@
                 <h6 class="mb-0">Mobile</h6>
             </div>
             <div class="col-sm-9 text-secondary">
-                (320) 380-4539
+                (91) {{professional.mobile_number}}
             </div>
         </div>
         <hr>
@@ -41,14 +41,9 @@
                 <h6 class="mb-0">Address</h6>
             </div>
             <div class="col-sm-9 text-secondary">
-                Bay Area, San Francisco, CA
+                {{professional.address.street}},{{professional.address.city}},{{professional.address.pincode}},Gujarat
             </div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col-sm-12">
-                <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-            </div>
-        </div>
     </div>
 </div>

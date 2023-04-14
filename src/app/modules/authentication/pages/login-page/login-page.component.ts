@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss', '../../auth-form-style.scss'],
   host: {
-    class: 'd-flex'
+    class: 'col-12 col-sm-9 col-md-8 col-lg-7 col-xl-6 '
   }
 })
 export class LoginPageComponent implements OnInit {
@@ -28,8 +28,7 @@ export class LoginPageComponent implements OnInit {
     ).then((credentials: any) => {
       let user;
       user = credentials.user?.displayName;
-      this.loginService.userName.next(user);
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']);
     }).catch(
       (err) => {
         console.log(err);
@@ -38,14 +37,14 @@ export class LoginPageComponent implements OnInit {
     )
   }
 
-  continueWithGoogle() {
-    this.loginService.continueWithGoogle().then((credentials: any) => {
-      let user = credentials.user?.displayName;
-      this.loginService.userName.next(user);
-      this.router.navigate(['/home']);
-    }).catch((e) => {
-      console.log(e);
-    });
-  }
+  // continueWithGoogle() {
+  //   this.loginService.continueWithGoogle().then((credentials: any) => {
+  //     let user = credentials.user?.displayName;
+  //     this.loginService.userName.next(user);
+  //     this.router.navigate(['/home']);
+  //   }).catch((e) => {
+  //     console.log(e);
+  //   });
+  // }
 
 }

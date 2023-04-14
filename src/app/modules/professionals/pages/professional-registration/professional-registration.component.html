@@ -1,0 +1,158 @@
+<div class="container bg-white shadow rounded p-5 text__grey mb-3"data-bs-theme="dark" >
+    <form [formGroup]="professionalProfileForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-4">
+            <!-- Contact detail -->
+            <div class="col-xxl-8">
+                <div class=" rounded-0">
+                    <div class="row">
+                        <h4 class="mb-3 mt-0 fs-5 text__grey">Personal detail</h4>
+                        <!-- Comapny Name -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label">Company Name *</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="company_name"
+                            aria-label="First name">
+                        </div>
+                        <!-- Phone number -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label">Phone number *</label>
+                            <input type="number" 
+                            minlength="10"
+                            class="form-control" 
+                            formControlName="phone_number"
+                            aria-label="Phone number">
+                        </div>
+                        <!-- Mobile number -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label">Mobile number *</label>
+                            <input 
+                            type="number" 
+                            class="form-control" 
+                            minlength="10"
+                            formControlName="mobile_number"
+                            aria-label="Phone number">
+                        </div>
+                        <!--Profession-->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label">Select your service *</label>
+                            <select class="form-select" formControlName="profession">
+                                <option value="Architecture">Architecture</option>
+                            </select>
+                        </div>
+                        <!-- Profile Picture -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label">Profile Picture</label>
+                            <input type="file" class="form-control">
+                        </div>
+                        <!--Comapny description-->
+                        <div class="col-12 mt-1">
+                            <label class="form-label">Company description *</label>
+                            <textarea 
+                            class="form-control"
+                            formControlName="company_description" 
+                            id=""  rows="6"></textarea>
+                        </div>
+                    </div> <!-- Row END -->
+                </div>
+            </div>
+        </div> <!-- Row END -->
+        <!--Address-->
+        <div class="row">
+            <div class="col-xxl-6 mb-2 mb-xxl-0">
+                <div class=" rounded">
+                    <div class="row" formGroupName="address">
+                        <h4 class="mb-3 mt-0 fs-5 text__grey">Address details</h4>
+                        <!-- street -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label">Street</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="street"
+                            placeholder="" aria-label="Facebook" >
+                        </div>
+                        <!-- locality -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label">Locality</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="locality">
+                        </div>
+                        <!-- City -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label">City</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="city">
+                        </div>
+                        <!-- Pincode -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label">Pincode</label>
+                            <input 
+                            type="number" 
+                            class="form-control" 
+                            formControlName="pincode">
+                        </div>
+                    </div> <!-- Row END -->
+                </div>
+            </div>
+        </div> <!-- Row END -->
+        <!-- Social media detail -->
+        <div class="row">
+            <div class="col-xxl-6 mb-2 mb-xxl-0">
+                <div class=" rounded">
+                    <div class="row ">
+                        <h4 class="mb-3 mt-0 fs-5 text__grey">Social media detail</h4>
+                        <!-- Facebook -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label"><i class="fab fa-fw fa-facebook me-2 text-facebook"></i>Facebook</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="facebook"
+                            placeholder="" aria-label="Facebook" >
+                        </div>
+                        <!-- Linkedin -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label"><i class="fab fa-fw fa-linkedin-in text-linkedin me-2"></i>Linkedin</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="linkedIn"
+                            placeholder="" aria-label="Linkedin" >
+                        </div>
+                        <!-- Instragram -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label"><i class="fab fa-fw fa-instagram me-2"></i>Instagram</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="instagram"
+                            aria-label="Instragram" >
+                        </div>
+                        <!-- Whatsapp -->
+                        <div class="col-md-6 mt-1">
+                            <label class="form-label"><i class="fab fa-fw fa-whatsapp me-2"></i>Whatsapp</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="whatsapp"
+                            aria-label="Pinterest">
+                        </div>
+                    </div> <!-- Row END -->
+                </div>
+            </div>
+        </div> <!-- Row END -->
+        <!-- button -->
+        <div class="fs-6 mt-2 mb-3">Note : - Fields  followed by * are compulsory.</div>
+
+        <div class=" d-md-flex justify-content-md-start text-center mt-2">
+            <button type="submit" class="btn btn-success me-3">Register</button>
+            <button type="button" class="btn btn-danger ">Cancel</button>
+        </div>
+    </form> <!-- Form END -->
+</div>

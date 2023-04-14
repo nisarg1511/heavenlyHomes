@@ -21,7 +21,13 @@ const routes: Routes = [
     path: 'professionals',
     canActivate: [AuthGaurdService],
     loadChildren: () => import('./modules/professionals/professionals.module').then(m => m.ProfessionalsModule)
-  }
+  },
+  {
+    path: 'calculator',
+    canActivate: [AuthGaurdService],
+    loadChildren: () => import('./modules/calculator/calculator.module').then(m => m.CalculatorModule)
+  },
+
 ];
 
 @NgModule({

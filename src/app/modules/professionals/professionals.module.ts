@@ -2,27 +2,37 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as pages from './pages';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfessionalSocialMediaComponent } from './components/professional-social-media/professional-social-media.component';
-import { ProfessionalProfilePictureComponent } from './components/professional-profile-picture/professional-profile-picture.component';
-import { ProfessionalContactDetailsComponent } from './components/professional-contact-details/professional-contact-details.component';
-import { ProfessionalProjectItemComponent } from './components/professional-project-item/professional-project-item.component';
-
+import * as components from './components'
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProfessionalResolver } from './resolvers/professional.resolver';
+import { ChatComponent } from './pages/chat/chat.component';
 const routes: Routes = [
   {
     path: '',
     component: pages.ModulePageComponent,
     children: [
       {
+        path: 'new',
+        component: pages.ProfessionalRegistrationComponent
+      },
+      {
         path: 'category',
         component: pages.ProfessionalsCategoryComponent
       },
       {
         path: 'category/:profession',
-        component: pages.ProfessionalListComponent
+        component: pages.ProfessionalListComponent,
+        resolve: { professionals: ProfessionalResolver },
+
       },
       {
         path: 'category/:profession/:professional_id',
-        component: pages.ProfessionalProfileComponent
+        component: pages.ProfessionalProfileComponent,
+        resolve: { professionals: ProfessionalResolver },
+      },
+      {
+        path: 'category/:profession/:professional_id/chat',
+        component: pages.ChatComponent
       }
     ]
   }
@@ -34,14 +44,17 @@ const routes: Routes = [
     pages.ModulePageComponent,
     pages.ProfessionalsCategoryComponent,
     pages.ProfessionalProfileComponent,
-    ProfessionalSocialMediaComponent,
-    ProfessionalProfilePictureComponent,
-    ProfessionalContactDetailsComponent,
-    ProfessionalProjectItemComponent
+    pages.ProfessionalRegistrationComponent,
+    components.ProfessionalSocialMediaComponent,
+    components.ProfessionalProfilePictureComponent,
+    components.ProfessionalContactDetailsComponent,
+    components.ProfessionalProjectItemComponent,
+    ChatComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   exports: [
     RouterModule

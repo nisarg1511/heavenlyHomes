@@ -1,45 +1,40 @@
+<!-- <div class="row">
+  <div class="col-12 col-sm-4 col-lg-3" *ngFor="let professional of professionals">
+    <div class="card shadow rounded-0 border-0 mb-4" (click)="onSelectProfessional(professional.id)">
+      <img src="{{professional.images.at(0)}}" class="card-img-top rounded-0" alt="..." *ngIf="professional.images">
+      <div class="card-body">
+        <h5 class="card-title fs-6">{{professional.company_name}}</h5>
+        <p><i class="fas fa-user-tie fs-7 ms-1 me-2"></i>{{professional.profession}}</p>
+        <p><i class="fas fa-tty fs-7 ms-1 me-2 text-success"></i>+91{{professional.phone_number}}</p>
+        <p><i class="fas fa-phone-alt ms-1 me-2 text-success fs-7"></i>+91{{professional.mobile_number}}</p>
+        <p><i class="fa fa-map-marker-alt ms-1 text-success me-2 fs-7"></i>{{professional.address.city}},Gujarat</p>
+      </div>
+    </div>    
+  </div>
+</div> -->
+    
 <div class="row">
-  <div class="col-12 col-sm-6 col-lg-4">
-    <div class="card shadow rounded-2 border-0 mb-4" (click)="onSelectProfessional('id')">
-      <img src="assets/crousel/image.jpg" class="card-img-top rounded-top-2" alt="...">
-      <div class="card-body">
-        <h5 class="card-title fs-6">Duplicate Destructions</h5>
-        <p><i class="fas fa-user-tie fs-7 ms-1 me-2"></i>Architecture</p>
-        <p><i class="fas fa-phone-alt ms-1 me-2 text-success fs-7"></i>+919099953821</p>
-        <p><i class="fa fa-map-marker-alt ms-1 text-success me-2 fs-7"></i>123 Street, New York, USA</p>
+  <div class="col-md-8 offset-md-2" *ngFor="let professional of professionals">
+    <div class="blog-card bg-white mb-4 overflow-hidden d-lg-flex rounded-lg position-relative" (click)="onSelectProfessional(professional.id)">
+      <div class="blog-image overflow-hidden d-flex align-items-center" *ngIf="professional.images">
+        <img src="{{professional.images.at(0)}}" alt="" class="blog-thumbnail" >
+
       </div>
-    </div>    
-  </div>
-  <div class="col-12 col-sm-6 col-lg-4">
-    <div class="card shadow rounded-2 border-0 mb-4">
-      <img src="assets/crousel/image.jpg" class="card-img-top rounded-top-2" alt="...">
-      <div class="card-body">
-        <h5 class="card-title fs-6">Duplicate Destructions</h5>
-        <p><i class="fas fa-user-tie fs-7 ms-1 me-2"></i>Architecture</p>
-        <p><i class="fas fa-phone-alt ms-1 me-2 text-success fs-7"></i>+919099953821</p>
-        <p><i class="fa fa-map-marker-alt ms-1 text-success me-2 fs-7"></i>123 Street, New York, USA</p>
-      </div>
-    </div>    
-  </div>
-    <div class="col-12 col-sm-6 col-lg-4">
-      <div class="card shadow rounded-2 border-0 mb-4">
-        <img src="assets/crousel/image.jpg" class="card-img-top rounded-top-2" alt="...">
-        <div class="card-body">
-          <h5 class="card-title fs-6">Duplicate Destructions</h5>
-          <p><i class="fas fa-user-tie fs-7 ms-1 me-2"></i>Architecture</p>
-          <p><i class="fas fa-phone-alt ms-1 me-2 text-success fs-7"></i>+919099953821</p>
-          <p><i class="fa fa-map-marker-alt ms-1 text-success me-2 fs-7"></i>123 Street, New York, USA</p>
+      <div class="p-4 blog-container">
+        <h4 class="mt-2 font-weight-bold">
+          <p class="text-dark" title="Agriculture is good for both humans and animals">{{professional.company_name}}</p>
+        </h4>
+        <span class="text-muted">{{professional.company_description}}</span>
+        <div class="blog-footer d-flex justify-content-between align-items-center border-top">
+          <div>
+            <a><img src="assets/avtars/avtar1.png" alt="" class="blog-author shadow" *ngIf="!professional.profile_picture"></a>
+            <a><img src="{{professional.profile_picture}}" alt="" class="blog-author shadow" *ngIf="professional.profile_picture"></a>
+
+            <a  class="text-dark">{{professional.user_name}}</a>
+          </div>
+          <small class="text-muted"><i class="fa fa-phone-alt me-1"></i>{{professional.mobile_number}}</small>
         </div>
-      </div>    
+      </div>
     </div>
   </div>
-    
-  
-  <!-- <div class="card mb-3 h-100 w-100">
-      <img src="https://wallpaperaccess.com/full/5089528.jpg" class="card-img-top max-size">
-      <div class="card-body">
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-  </div>
-    -->
+</div>

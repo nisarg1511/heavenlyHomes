@@ -1,28 +1,43 @@
-import { USER_ROLES } from "./user.enum";
-
 export interface IUser {
     id?: string;
     user_id: string;
     user_name: string;
-    roles: USER_ROLES;
-    permissions: IUserPermissions;
+    email: string
 }
 export interface IProfessional extends IUser {
+    phone_number: number;
+    profile_picture: string;
+    mobile_number: number;
+    company_name: string;
+    company_description: string;
     profession: string;
-    social_media: [
+    linkedIn: string;
+    instagram: string;
+    facebook: string;
+    whatsapp: string;
+    profile_photo: string;
+    images?: [];
+    address: {
+        street: string,
+        locality: string,
+        city: string,
+        pincode: number
+    };
+}
+export interface IUserProfile {
+    user_id: string;
+    user_name: string;
+    phone_number?: number;
+    company_name?: string;
+    profession?: string;
+    social_media?: [
         { app_name: string, link: string }
     ];
-    profile_photo: string;
-    projects: string[];
-    address: {
-        street_no: string,
+    profile_photo?: string;
+    projects?: string[];
+    address?: {
+        street: string,
         locality: string,
         city: string
     };
-}
-
-export interface IUserPermissions {
-    admin_access?: boolean;
-    professional_access: boolean;
-    client_access: boolean;
 }

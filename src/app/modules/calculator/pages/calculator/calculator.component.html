@@ -1,0 +1,214 @@
+<div class="container bg-white shadow rounded p-5 text__grey mb-3"data-bs-theme="dark" >
+    <form [formGroup]="calculatorForm" (ngSubmit)="calculateCost()">
+    <div class="row mb-4">
+        <!-- Contact detail -->
+        <div class="col-xxl-8">
+            <div class=" rounded-0">
+                <div class="row">
+                    <h3 class="mb-3 mt-0 fs-5 text__grey">Construction Cost Estimator</h3>
+                    <!-- Comapny Name -->
+                    <!-- Phone number -->
+                    <div class="col-md-6 mt-1">
+                        <label class="form-label">Area in sq feet *</label>
+                        <input type="number" 
+                            class="form-control rounded-0" 
+                            [class.border-danger]="!calculatorForm.get('area').valid && calculatorForm.get('area').touched"
+                            formControlName="area"
+                            aria-label="">
+                        <div *ngIf="!calculatorForm.get('area').valid && calculatorForm.get('area').touched" class="fs-6">Please enter area.</div>
+                    </div>
+                    <div class="col-md-6 mt-1">
+                        <label class="form-label">Select your location *</label>
+                        <select class="form-select rounded-0" formControlName="locality">
+                            <option value="urban">Urban</option>
+                            <option value="rural">Rural</option>
+                            <option value="metro">Metro</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" d-md-flex justify-content-md-start text-center mt-2">
+        <button type="submit" class="btn btn-success me-3" [disabled]="!calculatorForm.valid">Calculate</button>
+        <button type="button" (click)="onReset()" class="btn btn-danger me-3">Reset</button>
+    </div>
+    </form> 
+    <div *ngIf="show_finalCost">
+        <div class="d-flex justify-content-between mt-2">
+            <h4 class="fs-5">Total estimated cost:</h4>
+            <p class="fs-6">{{total_cost}}</p>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Show Details
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="mt-4">
+                        <div class="row text-600 text-white bg-primary py-25">
+                            <div class="d-none d-sm-block col-1">#</div>
+                            <div class="col-9 col-sm-5">Service/Material</div>
+                            <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                            <div class="d-none d-sm-block col-sm-2"></div>
+                            <div class="col-2">Amount</div>
+                        </div>
+                        <div class="text-95 text-secondary-d3">
+                            <div class="row mb-2 mb-sm-0 py-25">
+                                <div class="d-none d-sm-block col-1">1</div>
+                                <div class="col-9 col-sm-5">Design Fees</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{design}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                                <div class="d-none d-sm-block col-1">2</div>
+                                <div class="col-9 col-sm-5">Borewell</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{borewell}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25">
+                                <div class="d-none d-sm-block col-1">3</div>
+                                <div class="col-9 col-sm-5">Marking/Excavation</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{marking}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                                <div class="d-none d-sm-block col-1">4</div>
+                                <div class="col-9 col-sm-5">Sand</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{sand}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 ">
+                                <div class="d-none d-sm-block col-1">5</div>
+                                <div class="col-9 col-sm-5">Water</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{water}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                                <div class="d-none d-sm-block col-1">6</div>
+                                <div class="col-9 col-sm-5">Steel/Reinforcement</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{steel}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 ">
+                                <div class="d-none d-sm-block col-1">7</div>
+                                <div class="col-9 col-sm-5">Bricks</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{bricks}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                                <div class="d-none d-sm-block col-1">8</div>
+                                <div class="col-9 col-sm-5">Concrete contractor</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{contractor}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 ">
+                                <div class="d-none d-sm-block col-1">9</div>
+                                <div class="col-9 col-sm-5">Formwork/Framework</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{frame_work}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                                <div class="d-none d-sm-block col-1">10</div>
+                                <div class="col-9 col-sm-5">Plumbing/Sanitation</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{plumbing}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 ">
+                                <div class="d-none d-sm-block col-1">11</div>
+                                <div class="col-9 col-sm-5">Electrical work</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{electrical_work}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                                <div class="d-none d-sm-block col-1">12</div>
+                                <div class="col-9 col-sm-5">Compound wall/Door entrance</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{compound_wall}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 ">
+                                <div class="d-none d-sm-block col-1">13</div>
+                                <div class="col-9 col-sm-5">Soil</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{soil}}</div>
+                            </div>  
+                            <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                                <div class="d-none d-sm-block col-1">14</div>
+                                <div class="col-9 col-sm-5">Cement</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{cement}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25">
+                                <div class="d-none d-sm-block col-1">15</div>
+                                <div class="col-9 col-sm-5">Painting</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{painting}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                                <div class="d-none d-sm-block col-1">16</div>
+                                <div class="col-9 col-sm-5">Exterior Flooring</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{external_flooring}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 ">
+                                <div class="d-none d-sm-block col-1">17</div>
+                                <div class="col-9 col-sm-5">Doors and Windows</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{doors}}</div>
+                            </div>
+                            <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                                <div class="d-none d-sm-block col-1">18</div>
+                                <div class="col-9 col-sm-5">Miscellaneous</div>
+                                <div class="d-none d-sm-block col-4 col-sm-2"></div>
+                                <div class="d-none d-sm-block col-sm-2"></div>
+                                <div class="col-2 text-secondary-d2">{{miscellaneous}}</div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row border-b-2 brc-default-l2"></div>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-7   mt-lg-0">
+                            </div>
+                            <div class="col-12 col-sm-5  text-90 ">
+                                <div class="row my-2 align-items-center bgc-primary-l3 p-2">
+                                    <div class="col-7 text-right">
+                                        Total
+                                    </div>
+                                    <div class="col-5">
+                                        <span class="text-150 text-success-d3">{{total_cost}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-7 text-grey-d2 text-95 mt-2 mt-lg-0">
+                            Disclaimer:Values have been calculated using the average cost in each location.
+                            Arrived cost is for reference purpose only.
+                        </div>
+                    </div>
+                </div> 
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- -->
+</div>

@@ -8,7 +8,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  userName = new Subject<string>();
+  user = new Subject<any>();
+  userName = new Subject<any>();
   constructor(private auth: AngularFireAuth, private router: Router) { }
   async signIn(email: string, password: string) {
     return this.auth.signInWithEmailAndPassword(email, password);

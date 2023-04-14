@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IProfessional } from '../../../../models/user/user.model';
 
 @Component({
   selector: 'app-professional-contact-details',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./professional-contact-details.component.scss']
 })
 export class ProfessionalContactDetailsComponent {
-
+  @Input() professional: IProfessional
 }

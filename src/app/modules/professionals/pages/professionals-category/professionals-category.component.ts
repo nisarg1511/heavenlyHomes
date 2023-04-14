@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProfessionalService } from '../../service/professional.service';
 
 @Component({
   selector: 'app-professionals-category',
@@ -7,9 +8,11 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
   styleUrls: ['./professionals-category.component.scss']
 })
 export class ProfessionalsCategoryComponent {
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
-  count = 8;
-  onSelectProfessional(professional: string) {
-    this.router.navigate([professional], { relativeTo: this.activatedRoute })
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private professionalService: ProfessionalService) { }
+  professionList = ['Architect', 'Electrician', 'Agent', 'Contractor', 'Carpanter', 'Painter', 'Interior designer', 'Hardware-sanitary provider'];
+
+  onSelectProfessional(profession: string) {
+    this.router.navigate([profession], { relativeTo: this.activatedRoute });
+    // this.professionalService.getProfessionals(professional).subscribe();
   }
 }
